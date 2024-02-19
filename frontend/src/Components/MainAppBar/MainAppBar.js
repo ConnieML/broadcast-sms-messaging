@@ -51,7 +51,7 @@ const MainAppBar = () => {
       <AppBar position="absolute">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Outbound Messaging App
+            Connie Broadcast Alert System
           </Typography>
           { isAuthenticated && (<Button color="inherit" onClick={() => handleLogout()}>Logout</Button>)}
         </Toolbar>

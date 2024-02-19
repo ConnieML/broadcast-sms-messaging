@@ -22,7 +22,7 @@ const ChannelSelection = () => {
 
 		<>
           <RadioGroup aria-label="channel" name="channel" value={channelSelection} onChange={onRadioChange} row>
-            <FormControlLabel value="SMS" control={<Radio />} label="SMS" style={{ marginRight: '50px' }}  />
+            <FormControlLabel value="SMS" control={<Radio />} label="SMS Text" style={{ marginRight: '50px' }}  />
             <FormControlLabel value="Whatsapp" control={<Radio />} label="Whatsapp" style={{ marginRight: '50px' }}   />
 			<FormControlLabel value="FBM" control={<Radio />} label="Facebook Messenger" />
           </RadioGroup>
