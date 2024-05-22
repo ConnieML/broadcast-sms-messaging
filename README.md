@@ -1,4 +1,11 @@
-**Note:** This is the documentation for the updated version of the project that includes the latest Twilio APIs, like Content API and Broadcast API. If you are looking for the old version, please check the [old_version branch](https://github.com/evanTheTerribleWarrior/Twilio-Outbound-Messaging/tree/old_version).
+<a  href="https://www.connieconnect.com">
+<img  src="https://i.postimg.cc/MGd7M6Cp/connie-logo-white-thin-deja-Vu-Sans.png"  alt="Connie SaaS For Nonprofits"  width="250"  />
+</a>
+
+# 📡 📲 Connie Broadcast SMS Messaging V0.2
+
+
+**Note:** This is the documentation for the updated version of the project that includes the latest Twilio APIs, like Content API and Broadcast API. 
 
 **Note 2:** The repo is still work in progress. This note will be removed once the repo is in a stable state across all functionalities. Currently working on Logs, CampaignTable mostly
 
@@ -38,9 +45,9 @@ Easily set up and send out messaging campaigns using your Twilio account.
 
 - Clone the repository and `cd` into it:
 ```shell
-git clone https://github.com/evanTheTerribleWarrior/Twilio-Outbound-Messaging.git
+git clone https://github.com/ConnieML/broadcast-sms-messaging.git
 
-cd Twilio-Outbound-Messaging
+cd broadcast-sms-messaging
 ```
 
 - Go to `frontend` directory and run `npm install`:
@@ -56,8 +63,8 @@ npm install
 cp .env.example .env
 ```
 
-### Option 1: Build remote (Twilio account)
-- Run the `setup-remote.sh` script (if you use other shell, use the equivalent command):
+### Option 1: Build remote (Pushes to Twilio via Serverless Functions)
+- Run the `setup-remote.sh` script or use `./setup-remote.sh` script if you get a command not found error (if you use other shell, use the equivalent command):
 ```shell
 zsh setup-remote.sh
 # View your app at https://[my-runtime-url].twil.io/index.html
