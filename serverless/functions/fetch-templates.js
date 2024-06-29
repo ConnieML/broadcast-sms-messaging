@@ -11,6 +11,24 @@ exports.handler = async function(context, event, callback) {
   let check = checkAuth.checkAuth(event.request.cookies, context.JWT_SECRET);
   if(!check.allowed)return callback(null,check.response);
 
+  const fetchTemplates = async (url, axios_auth) => {
+    let templates = [];
+
+    if(!url || url.length === 0) url = URL;
+  
+    try {
+        const response = await axios.get(url, axios_auth);
+        const data = response.data;
+        templates = [...data.contents]
+        nextPageUrl = data.meta.next_page_url ? data.meta.next_page_url : null;
+      
+    } catch (error) {
+      console.error("Error fetching templates:", error);
+    }
+  
+    return {templates: templates, nextPageUrl: nextPageUrl};
+  };
+
 	try {
 
       let templates_array = [];
@@ -22,13 +40,13 @@ exports.handler = async function(context, event, callback) {
         }
       }
 
-		  const templates = await axios.get(URL, axios_auth);
-      if(templates.status !== 200){
-        throw("Could not load templates")
-      }
-      console.log(templates.data.contents)
 
-      templates.data.contents.forEach(t => {
+		  const {templates, nextPageUrl} = await fetchTemplates(event.nextPageUrl, axios_auth);
+
+      console.log(templates.length)
+      console.log(nextPageUrl)
+
+      templates.forEach(t => {
 
           const templateData = {
             'name': t.friendly_name + " - HX..." + t.sid.slice(-4),
@@ -52,7 +70,8 @@ exports.handler = async function(context, event, callback) {
             status: true,
             message: "Getting Templates done",
             data: {
-              templates_array: templates_array
+              templates_array: templates_array,
+              nextPageUrl: nextPageUrl
             },
           })
           callback(null, response);
